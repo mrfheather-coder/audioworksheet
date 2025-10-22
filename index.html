@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Interactive Worksheet</title>
+<style>
+  :root {
+    --bg: #f8fafc;
+    --card: #ffffff;
+    --text: #111827;
+    --muted: #6b7280;
+    --border: #e5e7eb;
+    --blue: #2563eb;
+    --green: #16a34a;
+    --green-bg: #ecfdf5;
+    --red: #dc2626;
+    --red-bg: #fef2f2;
+    --shadow: 0 1px 2px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.1);
+  }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  }
+  .container { max-width: 60rem; margin: 0 auto; padding: 1rem 1rem 3rem; }
+  section.card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 1rem;
+    padding: 1.25rem;
+    margin: 1.25rem 0;
+    box-shadow: var(--shadow);
+  }
+  h2.q {
+    font-size: 1.125rem; margin: 0 0 .5rem;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  audio { width: 100%; margin-bottom: .5rem; }
+  .grid { display: grid; gap: .5rem; }
+  @media (min-width: 768px) { .grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  label.opt {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: .75rem; border: 1px solid var(--border); border-radius: .75rem;
+    padding: .75rem .875rem; background: #fff; cursor: pointer;
+    transition: background .15s ease, border-color .15s ease, box-shadow .15s ease;
+  }
+  label.opt:hover { background: #f9fafb; }
+  label.opt.correct { border-color: var(--green); background: var(--green-bg); }
+  label.opt.incorrect { border-color: var(--red); background: var(--red-bg); }
+  .opt-left { display: inline-flex; gap: .5rem; align-items: center; }
+  .icon {
+    display: inline-flex; align-items: center; justify-content: center;
+    border-radius: 9999px; border: 1px solid;
+    font-size: .8rem; line-height: 1; padding: .15rem .4rem;
+  }
+  .icon.ok { border-color: var(--green); color: var(--green); }
+  .icon.no { border-color: var(--red); color: var(--red); }
+  input[type="radio"] { accent-color: var(--blue); }
+  input.gap {
+    width: 12rem; max-width: 50vw; text-align: center;
+    border: 1px solid var(--border); border-radius: .75rem; padding: .6rem .75rem;
+    outline: none; transition: border-color .15s ease, background .15s ease;
+    margin: 0 .25rem;
+    font-size: 1.1rem;
+  }
+  input.gap:focus { border-color: var(--blue); }
+  input.gap.correct { border-color: var(--green); background: var(--green-bg); }
+  input.gap.incorrect { border-color: var(--red); background: var(--red-bg); }
+  .pill {
+    display: inline-flex; align-items: center; gap: .5rem;
+    border: 1px solid var(--border); border-radius: 999px;
+    padding: .4rem .7rem; font-size: .9rem;
+  }
+  footer.actions { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: .75rem; margin-top: 1.5rem; }
+  button.reset {
+    background: #111827; color: #fff; border: none; border-radius: 1rem;
+    padding: .7rem 1rem; cursor: pointer; box-shadow: var(--shadow);
+  }
+  button.reset:hover { background: #000; }
+  .big { font-size: 1.25rem; line-height: 1.7; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <section class="card" id="q1">
+      <h2 class="q">1. ______ weight loss drugs help reduce the pressure on the Health Service?</h2>
+      <audio controls preload="metadata" src="./audio/1.mp3"></audio>
+      <div class="grid two">
+        <label class="opt"><span class="opt-left"><input type="radio" name="q1" value="could"><span>could</span></span><span class="icon-zone"></span></label>
+        <label class="opt"><span class="opt-left"><input type="radio" name="q1" value="couldn’t"><span>couldn’t</span></span><span class="icon-zone"></span></label>
+      </div>
+    </section>
+
+    <section class="card" id="q2">
+      <h2 class="q">2. You think children who are overweight ______ be given these weight-loss jabs.</h2>
+      <audio controls preload="metadata" src="./audio/2.mp3"></audio>
+      <div class="grid two">
+        <label class="opt"><span class="opt-left"><input type="radio" name="q2" value="should"><span>should</span></span><span class="icon-zone"></span></label>
+        <label class="opt"><span class="opt-left"><input type="radio" name="q2" value="shouldn’t"><span>shouldn’t</span></span><span class="icon-zone"></span></label>
+      </div>
+    </section>
+
+    <section class="card" id="q3">
+      <h2 class="q">3. I'm not saying that lifestyle measures ________ be in place</h2>
+      <audio controls preload="metadata" src="./audio/3.mp3"></audio>
+      <div class="grid two">
+        <label class="opt"><span class="opt-left"><input type="radio" name="q3" value="should"><span>should</span></span><span class="icon-zone"></span></label>
+        <label class="opt"><span class="opt-left"><input type="radio" name="q3" value="shouldn’t"><span>shouldn’t</span></span><span class="icon-zone"></span></label>
+      </div>
+    </section>
+
+    <section class="card" id="q4a">
+      <h2 class="q">4a.</h2>
+      <audio controls preload="metadata" src="./audio/4a.mp3"></audio>
+      <p class="big">
+        <input class="gap" placeholder="_____" data-gap="4a-0" /> part of the problem Thorrun,
+        <input class="gap" placeholder="_____" data-gap="4a-1" /> it? just briefly because we're running out of time…
+        <input class="gap" placeholder="_____" data-gap="4a-2" /> have to stay on it…
+      </p>
+      <div class="overall4a"></div>
+    </section>
+
+    <section class="card" id="q4b">
+      <h2 class="q">4b.</h2>
+      <audio controls preload="metadata" src="./audio/4b.mp3"></audio>
+      <p class="big">
+        You <input class="gap" placeholder="_____" data-gap="4b-0" /> have to stay on it, you
+        <input class="gap" placeholder="_____" data-gap="4b-1" /> learn some really helpful lifestyle measures,
+        <input class="gap" placeholder="_____" data-gap="4b-2" /> get yourself back to a place where you felt confident enough to carry on with with those lifestyle measures…
+      </p>
+      <div class="overall4b"></div>
+    </section>
+
+    <footer class="actions">
+      <button class="reset" id="resetBtn">Reset answers</button>
+      <div class="pill">Score: <strong id="score">0</strong> / 5</div>
+    </footer>
+  </div>
+
+<script>
+const ANSWERS = {
+  1:{type:"mcq",correct:"could"},
+  2:{type:"mcq",correct:"should"},
+  3:{type:"mcq",correct:"shouldn’t"},
+  "4a":{type:"multiGap",blanks:[["that's"],["isn't"],["you'd"]]},
+  "4b":{type:"multiGap",blanks:[["wouldn't"],["would"],["you'd"]]}
+};
+
+function norm(s){
+  let str = (s ?? '').toString().trim().toLowerCase();
+  str = str.replace(/[‘’‛`´]/g,"'").replace(/[“”]/g,'"');
+  str = str.replace(/\s+/g,' ');
+  return str;
+}
+function isMatch(u,a){const v=norm(u);for(const acc of a){if(acc instanceof RegExp){if(acc.test(v))return!0;}else if(norm(acc)===v)return!0;}return!1;}
+function setIcon(z,ok){z.innerHTML="";if(ok===null)return;const s=document.createElement("span");s.className="icon "+(ok?"ok":"no");s.textContent=ok?"✓":"✗";z.appendChild(s);}
+function setupMCQ(q){const s=document.getElementById("q"+q);const c=norm(ANSWERS[q].correct);const labs=s.querySelectorAll("label.opt");labs.forEach(l=>{const r=l.querySelector("input");const z=l.querySelector(".icon-zone");r.addEventListener("change",()=>{labs.forEach(L=>{L.classList.remove("correct","incorrect");setIcon(L.querySelector(".icon-zone"),null)});const ch=norm(r.value);const ok=ch===c;l.classList.add(ok?"correct":"incorrect");setIcon(z,ok);updateScore();});});}
+function setupGap(id){const s=document.getElementById("q"+id);const ins=s.querySelectorAll("input.gap");const a=ANSWERS[id];ins.forEach((inp,i)=>{let z=inp.nextElementSibling;if(!z||!z.classList.contains("icon-zone")){z=document.createElement("span");z.className="icon-zone";inp.insertAdjacentElement("afterend",z);}function val(){const ac=a.blanks[i];const ok=inp.value.trim()?isMatch(inp.value,ac):null;inp.classList.toggle("correct",ok===!0);inp.classList.toggle("incorrect",ok===!1);setIcon(z,ok);updateSectionOverall(id);updateScore();}inp.addEventListener("input",val);inp.addEventListener("blur",val);});}
+function updateSectionOverall(id){const s=document.getElementById("q"+id);const ins=s.querySelectorAll("input.gap");const o=s.querySelector(".overall"+id);if(!o)return;let any=!1,all=!0;ins.forEach((inp,i)=>{const ac=ANSWERS[id].blanks[i];const f=inp.value.trim().length>0;const ok=f?isMatch(inp.value,ac):null;if(f)any=!0;if(ok!==!0)all=!1;});if(!any){o.innerHTML="";return;}o.innerHTML='<span class="pill"><span style="color:'+(all?'var(--green)':'var(--red)')+';">'+(all?'All blanks correct':'Some blanks are incorrect')+'</span></span>';}
+function isQ1Correct(){const c=document.querySelector('#q1 input:checked');return c&&norm(c.value)===norm(ANSWERS[1].correct);}
+function isQ2Correct(){const c=document.querySelector('#q2 input:checked');return c&&norm(c.value)===norm(ANSWERS[2].correct);}
+function isQ3Correct(){const c=document.querySelector('#q3 input:checked');return c&&norm(c.value)===norm(ANSWERS[3].correct);}
+function isQ4aCorrect(){const i=document.querySelectorAll('#q4a input.gap');return Array.from(i).every((x,n)=>x.value.trim()&&isMatch(x.value,ANSWERS["4a"].blanks[n]));}
+function isQ4bCorrect(){const i=document.querySelectorAll('#q4b input.gap');return Array.from(i).every((x,n)=>x.value.trim()&&isMatch(x.value,ANSWERS["4b"].blanks[n]));}
+function updateScore(){const v=[isQ1Correct(),isQ2Correct(),isQ3Correct(),isQ4aCorrect(),isQ4bCorrect()];document.getElementById("score").textContent=v.filter(Boolean).length;}
+function resetAll(){document.querySelectorAll('input[type="radio"]').forEach(r=>r.checked=!1);document.querySelectorAll('label.opt').forEach(l=>{l.classList.remove('correct','incorrect');setIcon(l.querySelector('.icon-zone'),null)});document.querySelectorAll('input.gap').forEach(inp=>{inp.value="";inp.classList.remove('correct','incorrect');const z=inp.nextElementSibling;if(z&&z.classList.contains('icon-zone'))z.innerHTML="";});document.querySelectorAll('[class^="overall"]').forEach(e=>e.innerHTML="");updateScore();}
+setupMCQ(1);setupMCQ(2);setupMCQ(3);setupGap("4a");setupGap("4b");updateScore();document.getElementById("resetBtn").addEventListener("click",resetAll);
+</script>
+</body>
+</html>
